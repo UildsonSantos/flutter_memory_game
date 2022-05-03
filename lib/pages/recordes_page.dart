@@ -25,22 +25,23 @@ class RecordesPage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return index == 0
                 ? Padding(
-              padding: const EdgeInsets.only(top: 36, bottom: 24),
-              child: Center(
-                child: Text(
-                  'Modo ${getModo()}',
-                  style: const TextStyle(fontSize: 28, color: Round6Theme.color),
-                ),
-              ),
-            )
+                    padding: const EdgeInsets.only(top: 36, bottom: 24),
+                    child: Center(
+                      child: Text(
+                        'Modo ${getModo()}',
+                        style: const TextStyle(
+                            fontSize: 28, color: Round6Theme.color),
+                      ),
+                    ),
+                  )
                 : ListTile(
-              title: Text(recs[index]),
-              trailing: const Text('X jogadas'),
-              tileColor: Colors.grey[900],
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-            );
+                    title: Text(recs[index]),
+                    trailing: const Text('X jogadas'),
+                    tileColor: Colors.grey[900],
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                  );
           },
           itemCount: recs.length,
           separatorBuilder: (_, __) => const Divider(color: Colors.transparent),

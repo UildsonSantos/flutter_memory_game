@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) =>
-                  const NivelPage(modo: Modo.round6),
+                      const NivelPage(modo: Modo.round6),
                 ),
               ),
             ),
