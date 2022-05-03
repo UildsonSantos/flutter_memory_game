@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_memory_game/pages/home_page.dart';
+import 'package:flutter_memory_game/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Round 6 Memory',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.pink,
-        primaryColor: const Color(0XFFFF1D87),
-      ),
+      theme: Round6Theme.theme,
       home: const HomePage(),
     );
   }
