@@ -2,6 +2,7 @@ import 'package:flutter_memory_game/constants.dart';
 import 'package:flutter_memory_game/game_settings.dart';
 import 'package:flutter_memory_game/models/game_opcao.dart';
 import 'package:flutter_memory_game/models/game_play.dart';
+import 'package:flutter_memory_game/repositories/recordes_repository.dart';
 import 'package:mobx/mobx.dart';
 
 part 'game_controller.g.dart';
@@ -17,6 +18,7 @@ abstract class GameControllerBase with Store {
   bool venceu = false;
   @observable
   bool perdeu = false;
+  RecordesRepository recordesRepository;
 
   late GamePlay _gamePlay;
   List<GameOpcao> _escolha = [];
@@ -26,6 +28,14 @@ abstract class GameControllerBase with Store {
 
   @computed
   bool get jogadaCompleta => (_escolha.length == 2);
+
+  GameControllerBase({required this.recordesRepository}) {
+    reaction((_) => venceu == true, (bool ganhou) {
+      if (ganhou) {
+        recordesRepository.updateRecordes(gamePlay: _gamePlay, score: score);
+      }
+    });
+  }
 
   startGame({required GamePlay gamePlay}) {
     _gamePlay = gamePlay;
